@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Escola</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Fragments do menu -->
+<div th:replace="~{/fragments/menu.html :: menu}"></div>
+
+<main style="padding: 0; max-width: 100%;">
+    <div class="home-bg">
+        <h1>Bem-vindo ao Sistema Escolar IANES</h1>
+    </div>
+</main>
+
+<!-- Fragments do footer -->
+<div th:replace="~{/fragments/footer.html :: footer}"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
