@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar - Curso</title>
+    <link rel="stylesheet" href="/style2.css">
+</head>
+<body>
+
+<!-- Menu -->
+<div th:replace="~{/fragments/menu.html :: menu}"></div>
+
+<main>
+    <div class="card">
+        <h2>Alterar Curso</h2>
+
+        <form id="form-cadastro"
+              th:action="@{/curso/salvar}"
+              th:object="${curso}"
+              method="post"
+              enctype="multipart/form-data">
+
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{foto}">
+
+            <div class="form-grid">
+
+                <!-- FOTO ATUAL -->
+                <div class="form-group" style="grid-column: span 2; text-align:center;">
+                    <label>Foto Atual</label>
+
+                    <div>
+                        <img th:if="${curso.foto != null}"
+                             th:src="@{'/foto_pessoa/' + ${pessoa.foto}}"
+                             class="foto-preview">
+
+                        <img th:if="${curso.foto == null}"
+                             src="/foto_pessoa/default.png"
+                             class="foto-preview">
+                    </div>
+                </div>
+
+                <!-- NOVA FOTO -->
+                <div class="form-group" style="grid-column: span 2;">
+                    <label>Alterar Foto</label>
+                    <input type="file" name="arquivoFoto" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" required th:field="*{nome}">
+                </div>
+
+                <div class="form-group">
+                    <label>carga_horaria</label>
+                    <input type="text" required th:field="*{cpf}">
+                </div>
+
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button type="submit" class="btn btn-success">Alterar</button>
+                <a th:href="@{/curso/listagem}" class="btn btn-alter">Voltar para Lista</a>
+            </div>
+
+        </form>
+    </div>
+</main>
+
+<!-- Footer -->
+<div th:replace="~{/fragments/footer.html :: footer}"></div>
+
+</body>
+</html>
